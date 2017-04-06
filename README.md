@@ -12,7 +12,7 @@ I will be blogging on the following languages
 
 * <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/Java">Java</a> 
 * <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/JavaScript">JavaScript</a>
-* C++
+* C++ (coming soon)
 
 I will generally be posting on whatever topic that comes to my mind, but if suggestions are made, I may focus my energy towards first creating a post that addresses what was suggested.
 Later on, I also plan on writing blogs on database design, SQL, etc. 
