@@ -7,3 +7,6 @@ This includes (but is not limited to) the following content.
 2. Source code added in response to comments
 
 ## Data Structures
+
+<a href="http://thecodingdelight.com/stack-java/">The Stack Data Structure</a>&nbsp;
+<a href="http://thecodingdelight.com/introduction-linked-list/">Introduction to Linked List</a>&nbsp;
