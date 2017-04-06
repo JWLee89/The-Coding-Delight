@@ -10,8 +10,8 @@ I also love constructive feedback as well, so please feel free to contact me if 
 
 I will be blogging on the following languages
 
-* Java
-* JavaScript
+* <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/Java">Java</a> 
+* <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/JavaScript">JavaScript</a>
 * C++
 
 I will generally be posting on whatever topic that comes to my mind, but if suggestions are made, I may focus my energy towards first creating a post that addresses what was suggested.
