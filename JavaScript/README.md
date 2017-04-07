@@ -4,5 +4,5 @@ All the source code in <a href="http://thecodingdelight.com">thecodingdelight</a
 
 # Fundamentals
 
-<a href="http://thecodingdelight.com/variable-scope-hoisting-javascript/">Hoisting and Variable Scope in JavaScript</a>&nbsp;
-
+* <a href="http://thecodingdelight.com/variable-scope-hoisting-javascript/">Hoisting and Variable Scope in JavaScript</a>
+* <a href="http://thecodingdelight.com/understanding-closures-javascript/">Understanding Closures in Javascript</a>
