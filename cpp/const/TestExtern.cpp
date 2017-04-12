@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "TestExtern.h"
 #include <iostream>
 #include <string>
