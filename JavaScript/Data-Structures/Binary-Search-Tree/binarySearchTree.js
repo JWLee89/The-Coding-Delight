@@ -399,6 +399,33 @@
         this.equals = equalsComparator;
         return this;
     };
+    
+     /**
+     * Apply in-order traversal method
+     * @return this
+     * */
+    BinarySearchTree.prototype.inOrderTraversal = function inOrderTraversal(fn) {
+        inOrderTraversalImpl(this.root, fn);
+        return this;
+    };
+
+    /**
+     * Apply pre-order traversal method
+     * @return this
+     * */
+    BinarySearchTree.prototype.preOrderTraversal = function preOrderTraversal(fn) {
+        preOrderTraversalImpl(this.root, fn);
+        return this;
+    };
+
+    /**
+     * Apply post-order traversal method
+     * @return this
+     * */
+    BinarySearchTree.prototype.postOrderTraversal = function postOrderTraversal(fn) {
+        postOrderTraversalImpl(this.root, fn);
+        return this;
+    };
 
 
     // Expose the Binary Search Tree variable
@@ -410,32 +437,5 @@
     } else {
         throw new Error("BinarySearchTree is already defined");
     }
-
-    /**
-     * Apply in-order traversal method
-     * @return this
-     * */
-    BinarySearchTree.prototype.inOrderTraversal = function inOrderTraversal(fn) {
-        inOrderTraversalImpl(this.root, fn);
-        return this;
-    };
-
-    /**
-     * Apply in-order traversal method
-     * @return this
-     * */
-    BinarySearchTree.prototype.preOrderTraversal = function preOrderTraversal(fn) {
-        preOrderTraversalImpl(this.root, fn);
-        return this;
-    };
-
-    /**
-     * Apply in-order traversal method
-     * @return this
-     * */
-    BinarySearchTree.prototype.postOrderTraversal = function postOrderTraversal(fn) {
-        postOrderTraversalImpl(this.root, fn);
-        return this;
-    };
 
 })(); /* End Binary Search Tree Implementation */
