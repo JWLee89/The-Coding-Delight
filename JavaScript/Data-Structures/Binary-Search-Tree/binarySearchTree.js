@@ -44,7 +44,13 @@
      * @return this
      * */
     Node.prototype.setLeftChild = function setLeftChild(data) {
-        this.leftChild = Node(data);
+        if (data == null) {
+            this.leftChild = null;
+        } else if (data instanceof Node) {
+            this.leftChild = data;
+        } else {
+            this.leftChild = Node(data);
+        }
         return this;
     };
 
@@ -66,7 +72,13 @@
      * @return this
      * */
     Node.prototype.setRightChild = function setRightChild(data) {
-        this.rightChild = Node(data);
+        if (data == null) {
+            this.rightChild = null;
+        } else if (data instanceof Node) {
+            this.rightChild = data;
+        } else {
+            this.rightChild = Node(data);
+        }
         return this;
     };
 
@@ -86,14 +98,14 @@
             return new BinarySearchTree();
         }
         this.size = 0;
-        this.root = undefined;                  // Root of the binary search tree.
-        this.compare = function(a, b) {         // Default comparator function.
-            return a > b;
+        this.root = null;                                           // Root of the binary search tree.
+        this.compare = function compare(currentNodeData, dataToInsert) { // Default comparator function.
+            return currentNodeData > dataToInsert;
         };
-        this.equals = function(a, b) {          // Default equals comparator
+        this.equals = function equals(a, b) {                            // Default equals comparator
             return a === b;
         };
-        this.dataType = undefined;              // Determines the data type of the tree based on the type of the first element inserted
+        this.dataType = null;                                       // Determines the data type of the tree based on the type of the first element inserted
     }
 
     /**
@@ -102,7 +114,7 @@
     var objProto = Object.prototype;
     var toString = objProto.toString;
     var isObject = function isObject(item) {
-        toString.call(item) === "[object Object]";
+       return toString.call(item) === "[object Object]";
     };
 
     /**
@@ -137,7 +149,14 @@
 
     /**
      * Note that it might be more efficient to use a while loop
-     * rather than using recursion
+     * rather than using recursion. But recursion, can improve the readability
+     * of the code, especially if the problem involves doing the same action
+     * over and over again, which is what recursion is.
+     * Needless to say, for or while loops are also for repeating a code block, but
+     * recursion can be more intuitive, because the function or subroutine we are calling
+     * has a name, which describes the very thing we are doing over and over again.
+     * @param currentNode the node that we are comparing.
+     * @param dataToInsert this will be compared with the value stored in the current node.
      * @this BinarySearchTree
      * */
     function addNode(currentNode, dataToInsert) {
@@ -165,55 +184,93 @@
         }
     }
 
-    function removeNode(currentNode, dataToDelete) {
-        var parentChildIdentifier = null;
-        // If we find item that is equal, we will remove it.
-        // This time, we will use a while loop.
-        while (currentNode != null) {
-            var currentData = currentNode.data;
-            // Found data to remove. Destroy the node object.
-            if (this.equals(currentData, dataToDelete)) {
-                destroyNodeObject.call(this, currentNode, parentChildIdentifier);
-                break;
+    /**
+     * Remove a node from the binary search tree via recursive call.
+     * Recursive call can be made, because each sub-tree in it of itself is a binary search tree!!
+     * What I mentioned just now is really important!
+     * @param currentNode the node that we are comparing.
+     * @param dataToDelete The data we are searching for. When found, the node holding the data will be deleted
+     * @param parentChildIdentifier represents the child identifier key in the parent node. E.g. leftChild or rightChild.
+     * Will be null if it is a root node.for since root node doesn't have a parent. If set to leftChild, it means the following:
+     * "The current node is the left child of the parent".
+     * Hope the term above makes sense.
+     * @this BinarySearchTree
+     * */
+    function removeNode(currentNode, dataToDelete, parentChildIdentifier) {
+        if (currentNode == null) { // No elements. Set root to null
+            return currentNode;
+        }
+
+        var currentData = currentNode.data,
+            leftChild = currentNode.getLeftChild(),
+            rightChild = currentNode.getRightChild(),
+            parent = currentNode.getParentNode();
+
+        // Found data to remove. Destroy the node object.
+        if (this.equals(currentData, dataToDelete)) {
+            // Check how many children this tree has.
+            // Operations are fairly simple for nodes with zero or a single child node.
+
+            if (leftChild == null && rightChild == null) {
+                if (parent) {
+                    parent[parentChildIdentifier] = null;       // Deference the current node from the parent object if it has a parent.
+                }
+                console.log("removing " + currentNode.data);
+                return null;                                    // Set the current node to null.
             }
-            // Default behavior is left is greater than right.
-            // In another words, if current data is greater than data to delete.
-            // Go left in this case
-            else if (this.compare(currentData, dataToDelete)) {
-                currentNode = currentNode.leftChild;
-                parentChildIdentifier = "leftChild";
-            } else { // traverse right
-                currentNode = currentNode.rightChild;
-                parentChildIdentifier = "rightChild";
+
+            if (leftChild == null) {                                // Left child does not exist.
+                console.log("remove a node with a right child");
+                currentNode = null;                                 // Dereference the current node.
+                if (parent) {
+                    console.log("Data to link. Parent: " + parent.data + ". rightChild: " + rightChild.data);
+                    parent[parentChildIdentifier] = rightChild;     // Have appropriate parent child node pointer point to the child
+                }
+                return rightChild;                                  // Set the root node to the right child of the current node.
+            } else if (rightChild == null) {
+                console.log("remove a node with a left child");
+                currentNode = null;                                 // Dereference the current node.
+                if (parent) {
+                    console.log("Data to link. Parent: " + parent.data + ". leftChild: " + leftChild.data);
+                    parent[parentChildIdentifier] = leftChild;      // Have appropriate parent child node pointer point to the child
+                }
+                return leftChild;                                   // Set the root node to the left child of the current Node
+            } else {
+                console.log("removing a node with two children ...");
+
+                // The most complex case: Node to delete has two children.
+                // 1. Get maximum node in the left subtree.
+                var maxNodeLeftSubTree = getMaxNode(leftChild);
+                // 2. Set the data of the current node to that of the max node in the left Sub-tree
+                currentNode.data = maxNodeLeftSubTree.data;
+                // 3. Remove the node in the left sub-tree with the maximum value. Otherwise, there will be two copies.
+                // Think of this as simply copying the value and deleting the previous instance of the copy. Because that's what it is!
+                console.log("Max node left sub-tree: " + maxNodeLeftSubTree.data);
+                // Remove the largest node on the left sub-tree.
+                var leftChild = removeNode.call(this, leftChild, maxNodeLeftSubTree.data);
+                currentNode.setLeftChild(leftChild);
             }
         }
-    }
-
-    /**
-     * @param node Destroy this node
-     * @param parentChildIdentifier the Key of the parent that needs to @param node.
-     * The easiest case is when the node we are destroying has zero children.
-     * Just remove it. Easy!
-     * */
-    function destroyNode(node, parentChildIdentifier) {
-        var parent = node.getParentNode();
-        parent[parentChildIdentifier] = null;
-    }
-
-    /**
-     * Link parent and child. This is preparation for destroying the
-     * current node.
-     * @param node The current node that is going to be removed.
-     * @param childKey The key of @param node's child that needs to be connected to parent.
-     * @param parentChildIdentifier the Key of the parent that needs to @param node.
-     * */
-    function linkParentAndChild(node, childKey, parentChildIdentifier) {
-        var parent = node.getParentNode();
-        var child = node[childKey];
-        // Set parent node of new child to parent
-        child.setParentNode(parent);
-        // set parent's left or right child to left or right child of current node
-        parent[parentChildIdentifier] = child;
+        // Default behavior is left is greater than right.
+        // In another words, if current data is greater than data to delete.
+        // Go to the left sub-tree. Otherwise, go to the right sub-tree.
+        // The last parameter, "leftChild" is the parentChildIdentifier.
+        // Lets users know that the current node is the left child of the parent.
+        else if (this.compare(currentData, dataToDelete)) {
+            console.log("traversing left: ");
+            var leftRemoval = removeNode.call(this, leftChild, dataToDelete, "leftChild");
+            console.log("Right removal data: " + (leftRemoval ? leftRemoval.data : " - is null"));
+            console.log("----------------------------------------------");
+            currentNode.setLeftChild(leftRemoval);
+        } else {
+            console.log("traversing right: ");
+            var rightRemoval = removeNode.call(this, rightChild, dataToDelete, "rightChild");
+            console.log("Right removal data: " + (rightRemoval ? rightRemoval.data : " - is null"));
+            console.log("----------------------------------------------");
+            currentNode.setRightChild(rightRemoval);
+        }
+        console.log("Current node: " + currentNode.data);
+        return currentNode;
     }
 
     /**
@@ -221,31 +278,77 @@
      * in the parent object. Admittedly, this is more difficult
      * to implement in JavaScript than your traditional OOP language
      * like Java.
+     * @param currentNode The node that will be destroyed
+     * @param parentChildIdentifier The key that shows users whether the current node is a left or right child of parent node
+     * @return the appropriate child element
      * */
-    function destroyNodeObject(node, parentChildIdentifier) {
-        // Means it has no parents. Remove the root reference.
-        if (parentChildIdentifier == null) {
-            this.root = null;
-            return;
-        }
-
-        var leftChild = node.getLeftChild(),
-            rightChild = node.getRightChild();
+    function destroyNodeObject(currentNode, parentChildIdentifier) {
+        var leftChild = currentNode.getLeftChild(),
+            rightChild = currentNode.getRightChild(),
+            parent = currentNode.getParentNode();
 
         // Check how many children this tree has.
         // Operations are fairly simple for nodes with zero or a single child node.
         if (leftChild == null && rightChild == null) {
-            destroyNode(node, parentChildIdentifier);
-        } else if (leftChild != null) {
-            // Link the parent object and the child
-            linkParentAndChild(node, "leftChild", parentChildIdentifier);
-            // Destroy the node
-        } else if (rightChild != null) {
-            linkParentAndChild(node, "rightChild", parentChildIdentifier);
-        } else {
-            // The most complex case: Node to delete has two children.
-            // TODO: Work on it when you can
+            console.log("removing " + currentNode.data);
+            parent[parentChildIdentifier] = null;   // Deference the current node from the parent object
+            return null;                            // Set the current node to null.
         }
+
+        if (leftChild == null) {                // Left child does not exist.
+            console.log("remove a node with a child");
+            currentNode = null;                 // Dereference the current node.
+            rightChild["parentNode"] = null;    // Remove reference from the parent
+            return rightChild;                  // Set the root node to the right child of the current node.
+        }
+        else if (rightChild == null) {          // Right child does not exist.
+            console.log("remove a node with a left child");
+            currentNode = null;                 // Dereference the current node.
+            leftChild["parentNode"] = null;     // Remove reference from the parent
+            return leftChild;                   // Set the root node to the left child of the current Node
+        } else {
+            console.log("removing a node with two children ...");
+            // The most complex case: Node to delete has two children.
+            // 1. Get maximum node in the right subtree.
+            var maxNodeLeftSubTree = getMaxNode(leftChild);
+            // 2. Set the data of the current node to that of the max node in the leftSub-tree
+            currentNode.data = maxNodeLeftSubTree.data;
+            // 3. Remove the node in the left sub-tree with the maximum value. Otherwise, there will be two copies.
+            // Think of this as simply copying the value and deleting the previous instance of the copy. Because that's what it is!
+            console.log("Max node left sub-tree: " + maxNodeLeftSubTree.data);
+            // Remove the largest node on the left sub-tree.
+            var leftChild = removeNode.call(this, leftChild, maxNodeLeftSubTree.data);
+            currentNode.setLeftChild(leftChild);
+        }
+        return currentNode;
+    }
+
+    /**
+     * Get minimum node from a certain node.
+     * Logically speaking, to get the minimum value in a sub-tree,
+     * we need to go to the far left.
+     * Go far left via recursive call until there is no left child.
+     * Return the node that doesn't have a left child.
+     * */
+    function getMinNode(currentNode) {
+        var leftChild = currentNode.getLeftChild();
+        if (leftChild != null) {
+            currentNode = getMinNode(leftChild);
+        }
+        return currentNode;
+    }
+
+    /**
+     * Get maximum node from a certain node.
+     * Conversely to acquiring the min node, we head to the far right.
+     * Return the node that doesn't have a right child.
+     * */
+    function getMaxNode(currentNode) {
+        var rightChild = currentNode.getRightChild();
+        if (rightChild != null) {
+            currentNode = getMaxNode(rightChild);
+        }
+        return currentNode;
     }
 
     /**
@@ -307,8 +410,8 @@
      * Post-order traversal implementation details. For the sake of clarity,
      * I have decided to go with a recursive approach.
      * Post-order traversal: Left, Right, Root
-     * 1. Traverse the left subtree, i.e., call Postorder(left-subtree)
-     * 2. Traverse the right subtree, i.e., call Postorder(right-subtree)
+     * 1. Traverse the left subtree, i.e., call postOrderTraversalImpl(left-subtree) recursively
+     * 2. Traverse the right subtree, i.e., call postOrderTraversalImpl(right-subtree) recursively
      * 3. Visit the root.
      * @param node The current node we are at.
      * @param fn accepts a function. First argument is the data, second is the node object.
@@ -335,6 +438,7 @@
      * */
 
     /**
+     * Add data to the binary tree.
      * @param data
      * */
     BinarySearchTree.prototype.add = function add(data) {
@@ -358,11 +462,11 @@
 
     /**
      * Remove data from the Binary Search Tree
-     * @param data The data to remove
+     * @param dataToRemove The data to remove
      * */
-    BinarySearchTree.prototype.remove = function remove(data) {
+    BinarySearchTree.prototype.remove = function remove(dataToRemove) {
         if (!this.isEmpty()) {
-            removeNode.call(this, this.root, data);
+            this.root = removeNode.call(this, this.root, dataToRemove);
             decrementSize.call(this);
         }
     };
@@ -399,8 +503,28 @@
         this.equals = equalsComparator;
         return this;
     };
-    
-     /**
+
+    /**
+     * Return the "lowest" value from the tree.
+     * */
+    BinarySearchTree.prototype.min = function min() {
+        if (!this.isEmpty()) {
+            return getMinNode(this.root).data;
+        }
+        throw new Error("Cannot call min() on empty tree");
+    };
+
+    /**
+     * Return the "highest" value from the tree.
+     * */
+    BinarySearchTree.prototype.max = function max() {
+        if (!this.isEmpty()) {
+            return getMaxNode(this.root).data;
+        }
+        throw new Error("Cannot call max() on empty tree");
+    };
+
+    /**
      * Apply in-order traversal method
      * @return this
      * */
@@ -426,7 +550,6 @@
         postOrderTraversalImpl(this.root, fn);
         return this;
     };
-
 
     // Expose the Binary Search Tree variable
     if (window.BST === undefined) {
