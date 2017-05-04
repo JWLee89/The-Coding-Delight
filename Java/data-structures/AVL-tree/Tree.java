@@ -16,10 +16,5 @@ public interface Tree<T extends Comparable<T>> {
      * */
     void traverse();
 
-    /**
-     * return the height of the tree or the root node
-     * */
-    int height() throws RuntimeException;
-
     boolean isEmpty();
 }
