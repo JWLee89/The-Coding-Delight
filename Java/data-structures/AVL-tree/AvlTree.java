@@ -1,7 +1,5 @@
-package avlTree;
-
 /**
- * Created by Jay Lee on 2017-04-29.
+ * @author Jay
  */
 public class AvlTree<T extends Comparable<T>> implements Tree<T> {
 
@@ -13,12 +11,11 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     @Override
-    public boolean remove(T dataToRemove) {
+    public void remove(T dataToRemove) {
         if (isEmpty()) {
-            return false;
+            return;
         }
         rootNode = removeNode(rootNode, dataToRemove);
-        return rootNode.getData().compareTo(dataToRemove) == 0;
     }
 
     @Override
@@ -35,13 +32,12 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     /**
-     * @throw RuntimeException if the tree is empty and this si called
      * @return the height + 1 (+1 is to offset the -1 based counting)
      * */
     @Override
-    public int height() throws RuntimeException {
+    public int height() {
         if (isEmpty()) {
-            throw new RuntimeException("The AVL Tree is empty ...");
+            return 0;
         }
         return this.rootNode.getHeight() + 1;       // +1 to make it zero based again
     }
