@@ -8,10 +8,8 @@ public interface Tree<T extends Comparable<T>> {
     void insert(T data);
     /**
      * @param dataToRemove
-     * @return <code>true</code> if data was found and removed
-     * otherwise, return <code>false</code> if failed to remove
      * */
-    boolean remove(T dataToRemove);
+    void remove(T dataToRemove);
 
     /**
      * traverse the tree.
