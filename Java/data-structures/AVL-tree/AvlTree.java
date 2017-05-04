@@ -7,7 +7,7 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public void insert(T data) {
-        rootNode = insertData(rootNode, data);
+        rootNode = insertNode(rootNode, data);
     }
 
     @Override
@@ -23,23 +23,12 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
         if (isEmpty()) {
             return;
         }
-        inOrderTraversal(this.rootNode);
+        preOrderTraversal(this.rootNode);
     }
 
     @Override
     public boolean isEmpty() {
         return this.rootNode == null;
-    }
-
-    /**
-     * @return the height + 1 (+1 is to offset the -1 based counting)
-     * */
-    @Override
-    public int height() {
-        if (isEmpty()) {
-            return 0;
-        }
-        return this.rootNode.getHeight() + 1;       // +1 to make it zero based again
     }
 
     /*
@@ -60,7 +49,7 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
 
         // Base case
         if (currentNode == null) {
-            return currentNode;
+            return null;
         }
 
         Node<T> leftChild = currentNode.getLeftChild();
@@ -187,30 +176,30 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
      *
      * This method will ALWAYS return the root.
      *
-     * @param rootNode
+     * @param currentNode
      * @param dataToInsert
      * */
-    private Node<T> insertData(Node<T> rootNode, T dataToInsert) {
+    private Node<T> insertNode(Node<T> currentNode, T dataToInsert) {
 
         // The current root node is empty. Create a new node here
-        if (rootNode == null) {
+        if (currentNode == null) {
             return new Node<T>(dataToInsert);
         }
 
         // Is data to insert smaller than the current key value.
         // Go to the left.
-        if (dataToInsert.compareTo(rootNode.getData()) < 0) {
-            rootNode.setLeftChild(insertData(rootNode.getLeftChild(), dataToInsert));
+        if (dataToInsert.compareTo(currentNode.getData()) < 0) {
+            currentNode.setLeftChild(insertNode(currentNode.getLeftChild(), dataToInsert));
         } else {
-            rootNode.setRightChild(insertData(rootNode.getRightChild(), dataToInsert));
+            currentNode.setRightChild(insertNode(currentNode.getRightChild(), dataToInsert));
         }
 
+        currentNode = balanceTree(currentNode, dataToInsert);
+
         // Finally, update the height calculateTreeHeight(rootNode)
-        rootNode.setHeight(calculateTreeHeight(rootNode));
+        currentNode.setHeight(calculateTreeHeight(currentNode));
 
-        rootNode = balanceTree(rootNode, dataToInsert);
-
-        return rootNode;
+        return currentNode;
     }
 
     /**
@@ -242,14 +231,14 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T> {
         // Left right
         if (isLeftHeavy(balanceValue) &&
                 dataToInsert.compareTo(currentNode.getLeftChild().getData()) > 0) {
-            currentNode.setLeftChild(insertData(currentNode.getLeftChild(), dataToInsert));
+            currentNode.setLeftChild(insertNode(currentNode.getLeftChild(), dataToInsert));
             return rightRotation(currentNode);
         }
 
         // right-left
         if (isRightHeavy(balanceValue) &&
                 dataToInsert.compareTo(currentNode.getLeftChild().getData()) < 0) {
-            currentNode.setRightChild(insertData(currentNode.getRightChild(), dataToInsert));
+            currentNode.setRightChild(insertNode(currentNode.getRightChild(), dataToInsert));
             return leftRotation(currentNode);
         }
 
