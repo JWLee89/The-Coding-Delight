@@ -1,4 +1,3 @@
-# The AVL tree implementation. 
+# Data Structures 
 
-Hello and welcome! All the source code regarding the AVL tree implementation guide on my blog will be available here. 
-Right now, I am currently writing up on the guide. 
+Hello and welcome! All the source code regarding data structures will be posted here. Currently, the source code folder structure is in the process of being renovated. This page will be updated as soon as the updating process is complete.
