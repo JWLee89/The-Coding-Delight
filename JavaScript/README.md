@@ -6,4 +6,5 @@ All the source code in <a href="http://thecodingdelight.com">thecodingdelight</a
 
 * <a href="http://thecodingdelight.com/variable-scope-hoisting-javascript/">Hoisting and Variable Scope in JavaScript</a>
 * <a href="http://thecodingdelight.com/understanding-closures-javascript/">Understanding Closures in Javascript</a>
-* <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/JavaScript/Data-Structures/Binary-Search-Tree">Binary Search Tree Implementation in JavaScript</a>
+* <a href="http://www.thecodingdelight.com/binary-search-tree-implementation-javascript/">Binary Search Tree Implementation in JavaScript</a>
+* <a href="http://www.thecodingdelight.com/understanding-recursion/">Understanding Recursion</a>
