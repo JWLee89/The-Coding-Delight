@@ -34,7 +34,7 @@ public:
 
 	void Add(int data);
 	bool Remove(int data);
-	bool IsEmpty();
+	bool IsEmpty() const;
 
 	void EmptyList();
 
