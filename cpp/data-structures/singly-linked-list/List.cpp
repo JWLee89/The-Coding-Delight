@@ -146,10 +146,6 @@ bool List::Remove(int data)
 	std::cout << "Item: " << data
 		<< " was not found in the list ... " << std::endl;
 
-	// Deallocate memory so that we dont have a memory leak
-	//delete prevNodePtr;
-	//delete currentNodePtr;
-
 	return false;
 }
 
