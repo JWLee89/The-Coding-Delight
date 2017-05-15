@@ -36,7 +36,7 @@ List::List()
 	std::cout << "Initializing linked list ..." << std::endl;
 }
 
-// TODO: Write the implementation in the near future.
+// Readers: Feel free to refactor this to do what you want it to.
 List::List(const List& rhs)
 {
 	std::cout << "Starting the copying process ---- " << std::endl;
@@ -157,7 +157,7 @@ bool List::IsEmpty() const
 	return this->head == nullptr;
 }
 
-// Release memory from the CPU.
+// Free memory
 void List::EmptyList()
 {
 	node_ptr currentNodePtr;
