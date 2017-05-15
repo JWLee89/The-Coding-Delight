@@ -152,7 +152,7 @@ bool List::Remove(int data)
 /**
  * \return <code>true</code> if list is empty
  */
-bool List::IsEmpty()
+bool List::IsEmpty() const
 {
 	return this->head == nullptr;
 }
