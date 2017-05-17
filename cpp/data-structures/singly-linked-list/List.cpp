@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "List.h"
 #include <iostream>
-#include "Node.h"
 
 /**
  * \brief Create a node
