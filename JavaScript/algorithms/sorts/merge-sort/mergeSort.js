@@ -5,7 +5,7 @@
      * */
     function mergeSort(list) {
 
-        var len = array.length;
+        var len = list.length;
         // an array of length one or less is technically a sorted list.
         // This is our base case.
         if (len < 2) {
