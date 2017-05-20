@@ -15,7 +15,7 @@
         // This means that if we have an odd numbered length,
         // The first half will be greater than the second half
         // Don't have to do this, but simply a stylistic choice.
-        var middleIndex = len / 2,
+        var middleIndex = Math.ceil(len / 2),
 
             // Split current li into two: left and right list.
             leftList   = list.slice(0, middleIndex),
