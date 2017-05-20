@@ -6,9 +6,9 @@
     function mergeSort(list) {
 
         var len = array.length;
-        // an array of length one is technically a sorted list.
+        // an array of length one or less is technically a sorted list.
         // This is our base case.
-        if (len === 1) {
+        if (len < 2) {
             return list;
         }
         // round up so that first half is equal to or greater than second
