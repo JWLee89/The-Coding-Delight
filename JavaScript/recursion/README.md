@@ -13,6 +13,7 @@ Answers to the exercises can be found below.
 
 * 1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/reverseStr.js">Reversing a string</a>
 * 2. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/fibonacci.js"> Fibonacci number</a>
+* 3. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/digitCounter.js">Digit Counter </a>
 
 ## Advanced Exercises
 
