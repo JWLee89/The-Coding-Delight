@@ -9,6 +9,6 @@ If your knowledge of recursions is shaky, I recommend that you first <a href="ht
 
 * 1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/factorial.js"> Factorial </a>
 
-** Advanced Exercises
+## Advanced Exercises
 
 * 1. <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/JavaScript/algorithms/sorts/merge-sort">Merge Sort</a>
