@@ -9,12 +9,17 @@ Here is the link to the <a href="https://github.com/JWLee89/The-Coding-Delight/b
 
 Answers to the exercises can be found below.
 
-## Warm Up Excercises
+## Warm Up Exercises
 
 * 1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/reverseStr.js">Reversing a string</a>
 * 2. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/fibonacci.js"> Fibonacci number</a>
 * 3. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/digitCounter.js">Digit Counter </a>
 
+## Intermediate Exercises
+
+Coming very soon. 
+
 ## Advanced Exercises
 
 * 1. <a href="https://github.com/JWLee89/The-Coding-Delight/tree/master/JavaScript/algorithms/sorts/merge-sort">Merge Sort</a>
+* 3. <a href-"https://github.com/JWLee89/The-Coding-Delight/tree/master/JavaScript/Data-Structures/Binary-Search-Tree"> Binary Search Tree Implementation </a>
