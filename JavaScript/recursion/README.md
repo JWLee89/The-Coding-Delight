@@ -5,9 +5,13 @@ I will start working on the excercises ASAP so that I can have the solutions upl
 
 If your knowledge of recursions is shaky, I recommend that you first <a href="http://www.thecodingdelight.com/understanding-recursive-function-calls/">familiarize yourself with recursion</a> before proceeding.
 
+Here is the link to the <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/factorial.js"> factorial example</a> used in the blog post.
+
+Answers to the exercises can be found below.
+
 ## Warm Up Excercises
 
-* 1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/factorial.js"> Factorial </a>
+* 1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/reverseStr.js">Reversing a string</a>
 
 ## Advanced Exercises
 
