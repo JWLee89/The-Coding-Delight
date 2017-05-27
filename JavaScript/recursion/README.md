@@ -17,8 +17,7 @@ Answers to the exercises can be found below.
 4. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/removeReoccurringCharacters.js">Removing Reoccurring Characters</a>
 
 ## Intermediate Exercises
-
-Coming very soon. 
+1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/getGcd.js">Greatest Common Divisor<a/>
 
 ## Advanced Exercises
 
