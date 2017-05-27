@@ -12,6 +12,7 @@ Answers to the exercises can be found below.
 ## Warm Up Excercises
 
 * 1. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/reverseStr.js">Reversing a string</a>
+* 2. <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/recursion/exercises/fibonacci.js"> Fibonacci number</a>
 
 ## Advanced Exercises
 
