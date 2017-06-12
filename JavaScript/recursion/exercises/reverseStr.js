@@ -5,7 +5,7 @@
      * reverseStr("troll");
      * return reverseStr("roll") + "t";
      * return reverseStr("oll") + "r";
-     * return reverseStr("ll") + "0";
+     * return reverseStr("ll") + "o";
      * return reverseStr("l") + "l";
      * return "l";
      *
