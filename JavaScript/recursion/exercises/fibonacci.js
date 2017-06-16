@@ -19,13 +19,13 @@ function fibonacci(num) {
 }
 
 function fibonacciIter(num) {
-    var result = 1;
-    var counter = 2;
     if (num <= 2) {
         return 1;               // First two numbers of fib sequence is equal to 1
     } else {
-        var prevNo = 0;
-        var prevPrevNo = 0;
+        var result = 0;         // variable holding result
+        var counter = 2;        // Starting point of iteration
+        var prevNo = 0;         // prev number aka xn-1
+        var prevPrevNo = 0;     // prev number of previous number aka xn-2
         while (counter < num) {
             result = prevNo + prevPrevNo;   // xn = xn-1 + xn-2
             var temp = prevNo;              // Temp variable to store value
