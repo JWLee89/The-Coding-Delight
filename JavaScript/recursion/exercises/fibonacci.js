@@ -24,8 +24,8 @@ function fibonacciIter(num) {
     } else {
         var result = 0;         // variable holding result
         var counter = 2;        // Starting point of iteration
-        var prevNo = 0;         // prev number aka xn-1
-        var prevPrevNo = 0;     // prev number of previous number aka xn-2
+        var prevNo = 1;         // prev number aka xn-1. Equals one. Fib sequence starts like 1,1,2,3,5 ...
+        var prevPrevNo = 1;     // prev number of previous number aka xn-2.Equals one. Fib sequence starts like 1,1,2,3,5 ...
         while (counter < num) {
             result = prevNo + prevPrevNo;   // xn = xn-1 + xn-2
             var temp = prevNo;              // Temp variable to store value
