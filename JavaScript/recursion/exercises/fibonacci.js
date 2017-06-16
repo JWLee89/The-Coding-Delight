@@ -20,7 +20,7 @@ function fibonacci(num) {
 
 function fibonacciIter(num) {
     var result = 1;
-    var counter = 3;
+    var counter = 2;
     if (num <= 2) {
         return 1;               // First two numbers of fib sequence is equal to 1
     } else {
@@ -37,4 +37,4 @@ function fibonacciIter(num) {
     return result;
 }
 
-console.log(fibonacciIter(11));
+console.log(fibonacciIter(10)); // 55
