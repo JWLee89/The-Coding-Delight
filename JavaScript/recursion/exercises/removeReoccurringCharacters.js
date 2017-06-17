@@ -20,4 +20,23 @@ function removeReoccurringCharacters(str) {
     return result.join('');
 }
 
+function removeReoccurringCharactersIter(str) {
+    if (typeof str !== "string") {
+        throw new Error("Please enter a string!");
+    }
+    var charMap = {};
+    var result = [];
+    var charArray = str.split('');
+    for (var i = 0; i <charArray.length; i++) {
+        var currentChar = charArray[i];
+        // Character doesn't exist. Add to result
+        if (!charMap.hasOwnProperty(currentChar)) {
+            charMap[currentChar] = true;    // mark as character having occurred
+            result.push(currentChar);       // push into results
+        }
+        // Otherwise, do nothing
+    }
+    return result.join('');
+}
+
 console.log(removeReoccurringCharacters("trolla"));
