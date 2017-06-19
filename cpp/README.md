@@ -6,3 +6,4 @@ Hello and welcome! Most code snippets posted on <a href="http://www.thecodingdel
 
 * <a href="http://www.thecodingdelight.com/string-cplusplus/">Strings (std::string) Demystified in C++</a>
 * <a href="http://www.thecodingdelight.com/merge-sort-algorithm-tutorial/">Merge Sort Algorithm (language agnostic guide)</a>
+* <a href="http://www.thecodingdelight.com/implementing-singly-linked-list-cpp/">Singly linked list in C++</a>
