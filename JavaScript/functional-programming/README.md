@@ -6,6 +6,6 @@ I recommend <a href="http://www.thecodingdelight.com/functional-programming-java
 
 <a href="https://github.com/JWLee89/The-Coding-Delight/blob/master/JavaScript/functional-programming/basic.js">basic.js</a> contains the following methods 
 
-* forEach (I know, not a pure function)
-* map 
-* filter
+* <code>forEach()</code> (I know, not a pure function)
+* <code>map()</code>
+* <code>filter()</code>
