@@ -54,3 +54,16 @@ function filter(obj, predicate) {
     });
     return result;
 }
+/**
+ * @param {Object|Array} obj can either be an object or array. Otherwise, throw error
+ * @param {Function} predicate return true or truthy value to add item to result set.
+ * @param initialValue the initial value we start off with. The result's value and type will be set to initialValue.
+ */
+function reduce(obj, cb, initialValue) {
+     // This is how we set initial value. Result is initialized to initalValue.
+     var result = initialValue;
+     forEach(obj, function(val, key, originalObj) {
+         result = cb(result, val, key, originalObj);
+     });
+     return result;
+}
