@@ -3,7 +3,7 @@
  * Purely for demonstration and learning purposes. However, if anybody
  * has any good feedback on improving the implementation, I am all ears.
  * Please leave a comment on http://thecodingdelight.com or send me an email.
- * @link http://thecodingdelight.com
+ * @link https://www.thecodingdelight.com
  * @author Jay Lee
  * */
 // Wrap binary search tree in IIFE to minimize pollution of the global scope
