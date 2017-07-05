@@ -5,6 +5,6 @@ This was literally put together in an hour and 30 minutes, so I still need to ad
 
 In the meanwhile, please bear with me. I will try and finish it up as soon as possible. 
 
-The add() and remove() method should work fine so please feel free to play around with that.
+`add()` and `remove()` should work fine so please feel free to play around with that.
 
 Jay
