@@ -1,5 +1,5 @@
 /**
- * @Author Jay Lee
+ * @author Jay Lee
  */
 class Sorts {
 
