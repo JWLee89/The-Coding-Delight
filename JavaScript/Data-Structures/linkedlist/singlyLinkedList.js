@@ -1,5 +1,5 @@
 /**
- * @Author Jay Lee
+ * @author Jay Lee
  * @see https://www.thecodingdelight.com
  * A basic Linked List implementation for my blog.
  *
