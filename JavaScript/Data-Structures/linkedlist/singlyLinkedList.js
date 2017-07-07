@@ -321,7 +321,7 @@ linkedList.addByIndex([50, 49, 48], 3);
 console.log(linkedList);
 
 // 100 --> 2 --> 1 --> 53 --> 52 --> 51
-// --> 50 --> 49 --> 48 null
+// --> 50 --> 49 --> 48 --> null
 linkedList.addByIndex([53, 52, 51], 3);
 
 console.log(linkedList);
