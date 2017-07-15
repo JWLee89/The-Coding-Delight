@@ -1,5 +1,3 @@
-package blogpost.queue;
-
 /**
  * @author  Jay Lee
  */
