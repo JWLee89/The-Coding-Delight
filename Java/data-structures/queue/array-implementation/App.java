@@ -1,5 +1,3 @@
-package blogpost.queue;
-
 /**
  * Created by Jay Lee on 2017-07-13.
  */
