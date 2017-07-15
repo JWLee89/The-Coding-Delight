@@ -18,7 +18,8 @@ Remove the first item or the item at the front of the queue. Not to be confused 
 Return the item that was removed.
 
 E.g. 
-```queue.enqueue(1);       // Add item to the front of the queue
+```
+queue.enqueue(1);       // Add item to the front of the queue
 int one = queue.dequeue(); // 1
 ```
 
