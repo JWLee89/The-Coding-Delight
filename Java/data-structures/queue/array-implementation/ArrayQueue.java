@@ -11,7 +11,7 @@ public class ArrayQueue<T> implements Queue<T> {
     public ArrayQueue(T[] data) {
         int len = data.length;
 
-        // Make an array holding double the number of elemennts
+        // Make an array holding double the number of elements
         queueData = (T[]) new Object[len * 2];
 
         // Copy items into the queue
@@ -19,7 +19,7 @@ public class ArrayQueue<T> implements Queue<T> {
             queueData[i] = data[i];
         }
         // Update size status
-        size += len;
+        size = len;
         this.front = 0;
     }
 
