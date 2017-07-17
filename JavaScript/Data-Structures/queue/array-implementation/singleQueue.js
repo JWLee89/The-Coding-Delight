@@ -15,7 +15,6 @@
  * function Queue() {
  *     // Constructor function
  * }
- *
  * */
 (function() {
 
