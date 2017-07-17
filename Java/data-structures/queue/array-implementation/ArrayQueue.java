@@ -1,3 +1,5 @@
+package blogpost.queue;
+
 /**
  * @author  Jay Lee
  */
@@ -162,7 +164,7 @@ public class ArrayQueue<T> implements Queue<T> {
             // copy elements into the new array.
             int index = 0;
             T[] arr = (T[]) new Object[initSize];
-            for (int i = front; i < size; i++) {
+            for (int i = front; i < initSize; i++) {
                 arr[index] = queueData[i];
                 index++;
             }
@@ -175,7 +177,8 @@ public class ArrayQueue<T> implements Queue<T> {
             int index = 0;
             System.out.println("reshuffling array ------------- Before reshuffle");
             printWithNulls();
-            for (int i = front; i < initSize; i++) {
+            int endIndex = front + size;
+            for (int i = front; i < endIndex; i++) {
                 queueData[index] = queueData[i];
                 queueData[i] = null;
                 index++;
