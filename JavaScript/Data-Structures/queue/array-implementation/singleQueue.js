@@ -9,10 +9,10 @@
  * var privateFunction = function privateFunction() {
  *     // I am a private function
  * };
-     * function declarations starting with a capital letter
-     * will be Constructor functions.
-     * E.g.
-     * function Node() {
+ * function declarations starting with a capital letter
+ * will be Constructor functions.
+ * E.g.
+ * function Queue() {
  *     // Constructor function
  * }
  *
