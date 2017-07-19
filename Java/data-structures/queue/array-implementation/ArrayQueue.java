@@ -163,8 +163,9 @@ public class ArrayQueue<T> implements Queue<T> {
 
             // copy elements into the new array.
             int index = 0;
+            int endIndex = front + size;
             T[] arr = (T[]) new Object[initSize];
-            for (int i = front; i < initSize; i++) {
+            for (int i = front; i < endIndex; i++) {
                 arr[index] = queueData[i];
                 index++;
             }
