@@ -1,5 +1,6 @@
-package blogpost.datastructures.doublylinkedlist;
-
+/**
+ * @Author Jay Lee
+ * */
 public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
 
     private Node<T> head;
