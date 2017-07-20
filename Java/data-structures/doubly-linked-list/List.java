@@ -6,12 +6,12 @@ public interface List<T> {
     void insert(T data);
 
     /**
-     * Insert data after data at a specific index.
+     * Insert data after the node at a specific index.
      * */
     void insertAfter(T data, int index);
 
     /**
-     * Search from the start of the list and find.
+     * Search from the start of the list and find
      * data to remove.
      * */
     void remove(T data);
