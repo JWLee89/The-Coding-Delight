@@ -6,15 +6,27 @@ This is an implementation of the doubly linked list data structure for my upcomi
 
 ## `void insert(T data)`
 
-Insert data to the end of the list.
+Insert data to the front of the list.
+
+ * **Parameters:** `data` — <p>
 
 ## `void insertAfter(T data, int index)`
 
-Insert data after the node at a specific index.
+Insert data after data at a specific index.
+
+ * **Parameters:**
+   * `data` — the data to add.
+   * `index` — the index of node after which we will add data.
+
+     <p>
 
 ## `void remove(T data)`
 
-Search from the start of the list and find data to remove.
+Search from the start of the list and find. data to remove.
+
+ * **Parameters:** `data` — the data to add.
+
+     <p>
 
 ## `void removeAt(int index) throws IndexOutOfBoundsException`
 
