@@ -1,7 +1,7 @@
 public interface List<T> {
 
     /**
-     * Insert data to the front of the list.
+     * Insert data to the end of the list.
      * */
     void insert(T data);
 
