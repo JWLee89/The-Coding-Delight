@@ -21,9 +21,21 @@ public interface List<T> {
     void remove(T data);
 
     /**
+     * Remove first item from the list.
+     * In another word, remove the head node.
+     * */
+    void removeFromFront();
+
+    /**
+     * Remove last item from the list.
+     * In another word, remove the tail node.
+     * */
+    void removeFromBack();
+
+    /**
      * Remove the item at the nth index of the list.
      *
-     * @param index
+     * @param index the index of the item to remove
      * @throws IndexOutOfBoundsException
      * */
     void removeAt(int index) throws IndexOutOfBoundsException;
