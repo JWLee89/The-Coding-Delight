@@ -138,6 +138,34 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
         }
         return currentNode;
     }
+    
+    private void insertAtFront(T data) {
+        if (this.head == null) {
+            this.head = new Node<>(data);
+            // Tail and head cannot point at the same node
+            this.tail = null;
+        } else {
+            if (this.tail == null) {
+                this.tail = new Node<>(data);
+                // Update references
+                // Head --> Tail
+                // Head <-- Tail
+                this.head.setNext(this.tail);
+                this.tail.setPrev(this.head);
+            } else {
+                Node<T> prevHead = this.head;
+                Node<T> newHead = new Node<>(data);
+
+                // Update references
+                // newHead.next --> prevHead
+                // prevHead.prev <-- newHead
+                newHead.setNext(prevHead);
+                prevHead.setPrev(newHead);
+                this.head = newHead;
+            }
+        }
+        this.size++;
+    }
 
     private void insertNode(T dataToInsert,
                             Node<T> currentNode, Node<T> nextNode) {
