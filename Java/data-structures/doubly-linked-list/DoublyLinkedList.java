@@ -12,33 +12,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
      * */
     @Override
     public void insert(T data) {
-        if (this.head == null) {
-            Node<T> nodeToInsert = new Node<>(data);
-            this.head = nodeToInsert;
-            // Tail and head cannot point at the same node
-            this.tail = null;
-        } else {
-            //
-            if (this.tail == null) {
-                this.tail = new Node<>(data);
-                // Update references
-                // Head --> Tail
-                // Head <-- Tail
-                this.head.setNext(this.tail);
-                this.tail.setPrev(this.head);
-            } else {
-                Node<T> prevTail = this.tail;
-                Node<T> newTail = new Node<>(data);
-
-                // Update references
-                // prevTail --> newTail
-                // prevTail <-- newTail
-                newTail.setPrev(prevTail);
-                prevTail.setNext(newTail);
-                this.tail = newTail;
-            }
-        }
-        this.size++;
+        insertAtFront(data);
     }
 
     @Override
@@ -63,7 +37,39 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
             }
             currentNode = currentNode.getNext();
         }
+    }
 
+    @Override
+    public void removeFromFront() {
+        if (this.head != null) {
+            Node<T> nextNode = this.head.getNext();
+            // Set prev node of next to null if it exists
+            if (nextNode != null) {
+                nextNode.setPrev(null);
+            }
+            // Remove current head
+            this.head = null;
+            this.head = nextNode;
+            this.size--;
+        }
+    }
+
+    @Override
+    public void removeFromBack() {
+        if (this.head != null) {
+            if (this.tail != null) {
+                // Two or more elements exist
+                Node<T> newTail = this.tail.getPrev();
+                this.tail = null;
+                newTail.setNext(null);
+                this.tail = newTail;
+            } else {
+                // Tail is null but head is not null
+                // means that this is the last element
+                this.head = null;
+            }
+            this.size--;
+        }
     }
 
     @Override
@@ -138,7 +144,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
         }
         return currentNode;
     }
-    
+
     private void insertAtFront(T data) {
         if (this.head == null) {
             this.head = new Node<>(data);
@@ -162,6 +168,36 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
                 newHead.setNext(prevHead);
                 prevHead.setPrev(newHead);
                 this.head = newHead;
+            }
+        }
+        this.size++;
+    }
+
+    private void insertAtBack(T data) {
+        if (this.head == null) {
+            Node<T> nodeToInsert = new Node<>(data);
+            this.head = nodeToInsert;
+            // Tail and head cannot point at the same node
+            this.tail = null;
+        } else {
+            //
+            if (this.tail == null) {
+                this.tail = new Node<>(data);
+                // Update references
+                // Head --> Tail
+                // Head <-- Tail
+                this.head.setNext(this.tail);
+                this.tail.setPrev(this.head);
+            } else {
+                Node<T> prevTail = this.tail;
+                Node<T> newTail = new Node<>(data);
+
+                // Update references
+                // prevTail --> newTail
+                // prevTail <-- newTail
+                newTail.setPrev(prevTail);
+                prevTail.setNext(newTail);
+                this.tail = newTail;
             }
         }
         this.size++;
