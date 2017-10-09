@@ -35,8 +35,8 @@ public class StringBuilder {
     }
 
     /**
-     * @this return <code>StringBuilder</code> so that we can chain methods
      * @param str The string to append to the string builder
+     * @return <code>this</code>. In other words, the<code>StringBuilder</code> so that we can chain methods
      */
     public StringBuilder append(String str) {
         while (resizeRequired(str)) {
@@ -48,8 +48,8 @@ public class StringBuilder {
     }
 
     /**
-     * @this return <code>StringBuilder</code> so that we can chain methods
      * @param str The character array to append to the string builder
+     * @return <code>this</code>. In other words, the<code>StringBuilder</code> so that we can chain methods
      */
     public StringBuilder append(char[] str) {
         while (resizeRequired(str)) {
