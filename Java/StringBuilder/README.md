@@ -6,6 +6,7 @@ I felt like attempting to implement a basic implementation of the String Builder
 
 ## `public class StringBuilder`
 
+No operation. Initialize the character array to default size of 16.
 
 ## `public StringBuilder(char[] str)`
 
