@@ -8,7 +8,7 @@ package blogpost.strings;
 public class StringBuilder {
 
     private static final int BUFFER_MULTIPLIER = 2;
-    private static final int DEFAULT_BUFFER_SIZE = 64;
+    private static final int DEFAULT_BUFFER_SIZE = 16;
 
     private char[] str;
     private int size;
@@ -39,7 +39,7 @@ public class StringBuilder {
      * @param str The string to append to the string builder
      */
     public StringBuilder append(String str) {
-        if (resizeRequired(str)) {
+        while (resizeRequired(str)) {
             resizeBuffer(str);
         }
         addString(str);
@@ -52,7 +52,7 @@ public class StringBuilder {
      * @param str The character array to append to the string builder
      */
     public StringBuilder append(char[] str) {
-        if (resizeRequired(str)) {
+        while (resizeRequired(str)) {
             resizeBuffer(str);
         }
         addString(str);
