@@ -60,6 +60,11 @@ public class StringBuilder {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(this.str);
+    }
+
     /**
      * Private methods
      * =================
@@ -127,10 +132,5 @@ public class StringBuilder {
 
     private void updateCharCount(int charCount) {
         this.charCount += charCount;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(this.str);
     }
 }
