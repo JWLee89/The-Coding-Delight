@@ -21,15 +21,13 @@ typename LinkedListQueue<T>::nodePtr LinkedListQueue<T>::CreateNode(T data)
 template <class T>
 void LinkedListQueue<T>::EmptyQueue()
 {
-	nodePtr current_node;
 	while (this->head != nullptr)
 	{
-		current_node = this->head;
+		nodePtr current_node = this->head;
 		std::cout << "Removing " << current_node->data << " ... " << std::endl;
 		this->head = this->head->next;
 		delete current_node;
 	}
-	this->head = nullptr;
 	this->tail = nullptr;
 	this->size = 0;
 }
