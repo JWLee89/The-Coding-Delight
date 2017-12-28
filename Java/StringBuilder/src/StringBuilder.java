@@ -19,6 +19,13 @@ public class StringBuilder {
         this.size = DEFAULT_BUFFER_SIZE; // Default size
         this.str = new char[DEFAULT_BUFFER_SIZE];
     }
+    
+    /**
+     * @param size The initial size of the underlying character array.
+     */
+    public StringBuilder(int size) {
+        this.size = size;   
+    }
 
     /**
      * @param str a character array
