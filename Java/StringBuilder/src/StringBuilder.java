@@ -19,26 +19,42 @@ public class StringBuilder {
         this.size = DEFAULT_BUFFER_SIZE; // Default size
         this.str = new char[DEFAULT_BUFFER_SIZE];
     }
-    
+
     /**
      * @param size The initial size of the underlying character array.
      */
     public StringBuilder(int size) {
-        this.size = size;   
+        this.size = size;
+        this.str = new char[size];
     }
 
     /**
      * @param str a character array
      * */
     public StringBuilder(char[] str) {
-        this.str = str;
+        this();
+        append(str);
     }
 
     /**
-     * @param str A string containing the intitial value of character buffer;
+     * @param str A string containing the initial value of character buffer;
      * */
     public StringBuilder(String str) {
-        this.str = str.toCharArray();
+        this();
+        append(str);
+    }
+
+    /**
+     * @param item The item to append to the string builder. Is converted to String
+     */
+    public StringBuilder append(Object item) {
+        String str = item.toString();
+        while (resizeRequired(str)) {
+            resizeBuffer(str);
+        }
+        addString(str);
+        updateCharCount(str.length());
+        return this;
     }
 
     /**
