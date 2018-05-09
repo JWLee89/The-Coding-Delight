@@ -79,7 +79,6 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
         }
         Node<T> nodeToRemove = getNodeAt(index);
         removeNode(nodeToRemove);
-        this.size--;
     }
 
     @Override
