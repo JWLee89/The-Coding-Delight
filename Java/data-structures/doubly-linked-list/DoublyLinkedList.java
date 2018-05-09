@@ -152,12 +152,16 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
             this.tail = null;
         } else {
             if (this.tail == null) {
-                this.tail = new Node<>(data);
-                // Update references
-                // Head --> Tail
-                // Head <-- Tail
-                this.head.setNext(this.tail);
-                this.tail.setPrev(this.head);
+                 // Current head becomes new tail,
+                 // Since we are adding the second element
+                 this.tail = this.head;
+                 // Set new head
+                 this.head = new Node<>(data);
+                 // Lastly, update references
+                 // Head --> Tail
+                 // Head <-- Tail
+                 this.head.setNext(this.tail);
+                 this.tail.setPrev(this.head);
             } else {
                 Node<T> prevHead = this.head;
                 Node<T> newHead = new Node<>(data);
