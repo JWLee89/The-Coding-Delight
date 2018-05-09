@@ -152,6 +152,7 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
             this.tail = null;
         } else {
             if (this.tail == null) {
+                 // @Credit @alphaveneno Thank you for pointing out this mistake
                  // Current head becomes new tail,
                  // Since we are adding the second element
                  this.tail = this.head;
